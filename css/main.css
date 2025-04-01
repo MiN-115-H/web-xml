@@ -16,7 +16,7 @@ body {
 
 /* Header styles */
 header {
-  background: linear-gradient(135deg, #0077f6, #0077f6);
+  background: linear-gradient(135deg, #54a5fc, #54a5fc);
   color: #333;
   text-align: center;
   padding: 4rem 1rem;
@@ -67,7 +67,7 @@ header p {
 
 /* Footer */
 footer {
-  background-color: #d5bdaf;
+  background-color: #54a5fc;
   color: #333;
   text-align: center;
   padding: 1.5rem;
@@ -89,13 +89,13 @@ a {
 }
 
 a:hover {
-  color: #d5bdaf;
+  color: #54a5fc;
   text-decoration: underline;
 }
 
 /* Navigation */
 .navbar {
-  background-color: #d5bdaf;
+  background-color: #54a5fc;
   padding: 0.8rem 1.5rem;
   display: flex;
   align-items: center;
