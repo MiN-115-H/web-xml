@@ -44,3 +44,10 @@ document.querySelectorAll(".toggle-week").forEach(function (weekLink) {
     }
   });
 });
+
+document.getElementById("scrollBtn").addEventListener("click", function () {
+  const target = document.querySelector("#contenido");
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth" });
+  }
+});

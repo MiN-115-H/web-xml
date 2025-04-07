@@ -68,3 +68,12 @@ a:hover {
     flex-wrap: wrap;
     padding-top: 32px;
 }
+
+.navbar-wrapper {
+    align-items: center;
+  }
+  
+  .titulo-usuario {
+    text-align: center;
+  }
+  

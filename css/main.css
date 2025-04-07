@@ -7,7 +7,7 @@ body {
   line-height: 1.8;
   margin: 0;
   background-color: #ffffff; /* Blanco */
-  color: #000000; /* Negro */
+  color: #333;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -15,36 +15,63 @@ body {
 }
 
 /* Header styles */
-header {
-  background: #b0d0f0; /* Azul pálido */
-  color: #000000; /* Negro */
-  text-align: center;
-  padding: 4rem 1rem;
-  min-height: 50px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-header h1 {
-  font-size: 3.5rem;
+* {
   margin: 0;
-  letter-spacing: 1px;
-  font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-header p {
-  font-size: 1.6rem;
-  margin-top: 0.8rem;
-  opacity: 0.9;
+header {
+  padding: 20px;
+  background-color: #add8e6; /* Azul claro */
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  height: 100vh; /* Ocupa toda la ventana */
+  background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.scroll-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white;
+  color: #4e54c8;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: #ddd;
+}
+
+.content {
+  height: 100vh;
+  padding: 50px;
+  background-color: #f5f5f5;
 }
 
 /* Main content */
 .content {
-  width: 70%;
+  width: 80%;
   margin: 2rem auto;
   padding: 2rem 1rem;
   text-align: center;
-  background-color: #ffffff; /* Blanco */
+  background-color: #e3f2fd; /* Azul pálido */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
   flex: 1 0 auto;
@@ -53,22 +80,22 @@ header p {
 .content h2 {
   font-size: 2rem;
   margin-bottom: 1.2rem;
-  color: #000000; /* Negro */
+  color: #000000;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .content p {
   font-size: 1.05rem;
-  color: #000000; /* Negro */
+  color: #555;
   margin-bottom: 2rem;
   line-height: 1.8;
 }
 
 /* Footer */
 footer {
-  background-color: #b0d0f0; /* Azul pálido */
-  color: #000000; /* Negro */
+  background-color: #bbdefb; /* Azul pálido */
+  color: #333;
   text-align: center;
   padding: 1.5rem;
   margin-top: auto;
@@ -83,12 +110,197 @@ footer p {
 
 /* Links */
 a {
-  color: inherit;
+  color: black;
   text-decoration: none;
   transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 a:hover {
-  color: #000000; /* Negro */
+  color: #d5bdaf;
   text-decoration: underline;
+}
+
+/* Navigation */
+.navbar {
+  background-color: #bbdefb; /* Azul pálido */
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  overflow-y: auto;
+  top: 0;
+  z-index: 1000;
+  height: 65px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Personalización de la barra de desplazamiento */
+.navbar::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+  height: 8px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+/* Estilo para el track (fondo de la barra de desplazamiento) */
+.navbar::-webkit-scrollbar-track {
+  background-color: #333; /* Fondo del track */
+  border-radius: 10px; /* Bordes redondeados del track */
+}
+
+/* Estilo para el pulgar (la parte que arrastra) */
+.navbar::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del pulgar */
+  border-radius: 10px; /* Bordes redondeados del pulgar */
+}
+
+/* Estilo para el pulgar al pasar el ratón por encima */
+.navbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del pulgar al pasar el ratón */
+}
+
+/* For the weeks that will be togglable */
+ul .week-points {
+  display: none;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+ul .week-points li {
+  font-size: 0.9rem;
+}
+
+/* Estilo para el overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(179, 229, 252, 0.5); /* Azul pálido con transparencia */
+  backdrop-filter: blur(3px); /* Efecto de desenfoque */
+  display: none; /* Está oculto por defecto */
+  z-index: 1; /* Asegura que esté por encima del contenido */
+  transition: opacity 0.3s ease-in-out, backdrop-filter 0.6s ease-in-out; /* La transición del blur es más lenta */
+}
+
+/* Cuando el navbar está abierto, mostramos el overlay */
+.navbar.open ~ .overlay {
+  display: block;
+  opacity: 1;
+}
+
+/* Navbar configuraciones */
+.navbar-container {
+  display: flex;
+}
+
+.navbar {
+  position: fixed;
+  font-size: 16px;
+  top: 0;
+  left: -100%;
+  width: 350px;
+  height: 100%;
+  background-color: #fff; /* Cambiado a blanco */
+  color: #000; /* Texto negro */
+  transition: left 0.3s ease;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 60px; /* Espacio superior */
+}
+
+
+.navbar.open {
+  left: 0;
+}
+
+.hamburger {
+  font-size: 30px;
+  padding: 20px;
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.navbar ul {
+  padding: 10px;
+  list-style-type: none;
+  margin: 0;
+  width: 100%;
+}
+
+.navbar li {
+  padding: 5px 0;
+}
+
+.navbar a {
+  display: block;
+  text-decoration: none;
+  color: #333; /* Texto oscuro */
+  padding: 8px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border-radius: 8px;
+}
+
+
+.navbar a:hover {
+  transform: scale(1.05);
+  background-color: #add8e6;
+}
+
+.close-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  font-size: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+ul .week-points {
+  display: none;
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+ul .week-points li {
+  font-size: 0.9rem;
+}
+
+/* Personalización de la barra de desplazamiento de la página */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+  height: 8px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+/* Estilo para el track (fondo de la barra de desplazamiento) */
+::-webkit-scrollbar-track {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0
+  ); /* Fondo con opacidad 0 (totalmente transparente) */
+  border-radius: 10px; /* Bordes redondeados del track */
+}
+
+/* Estilo para el pulgar (la parte que arrastra) */
+::-webkit-scrollbar-thumb {
+  background-color: #8b7d6b; /* Color del pulgar */
+  border-radius: 10px; /* Bordes redondeados del pulgar */
+}
+
+/* Estilo para el pulgar al pasar el ratón por encima */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ad9a8f; /* Color del pulgar al pasar el ratón */
+}
+
+.enlace-contacto:hover {
+  color: #8a837c;
 }
